@@ -11,10 +11,10 @@ export class MailerSendConfig{
       apiKey: process.env.MAILERSEND_API_KEY!
     });
 
-    const sender = new Sender("john.zaia@outlook.com", "Test Change Request");
+    const sender = new Sender("admin@test-p7kx4xwrpnmg9yjr.mlsender.net", "Test Change Request");
 
     const receiver = [
-      new Recipient("zaiaj1@mcmaster.ca", "John Zaia")
+      new Recipient("john.zaia@outlook.com", "John Zaia")
     ];
 
     const emailParameters = new EmailParams()
