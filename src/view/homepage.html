@@ -2,6 +2,7 @@
 <html>
     <script src="/testDBQuery.js" defer></script>
     <script src="/testAPI.js" defer></script>
+    <script src="/changeRequestForm.js" defer></script>
     <link rel="stylesheet" href="styles/styles.css">
     <head><title>DB Test</title></head>
     <body>
@@ -13,11 +14,28 @@
         <button id="emailBtn">Send Test Email</button>
         <pre id="emailResult"></pre>
 
-        <h1>Create New Change Request</h1>
-        <button id="changeRequestBtn">Create</button>
-        <pre id="changeRequestResult"></pre>
+            <h1>Create Change Request</h1>
 
-        <h1></h1>
+            <form id="changeRequestForm">
+                <label>Title:</label><br>
+                <input type="text" id="title" required><br><br>
+
+                <label>Description:</label><br>
+                <textarea id="description" required></textarea><br><br>
+
+                <label>Risk:</label><br>
+                <input type="text" id="risk"><br><br>
+
+                <label>Case Number:</label><br>
+                <input type="text" id="caseNumber"><br><br>
+
+                <label>Email:</label><br>
+                <input type="email" id="email" required><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+
+
         <table>
             <h1 id="tableTitle">Active Change Requests</h1>
             <tr>

@@ -8,6 +8,7 @@ const PORT = 3000;
 
 const controller = new ChangeRequestController();
 app.use(express.json());
+app.post("/change-request", controller.submitRequest.bind(controller));
 
 app.use(express.static(path.join(__dirname, "../src/client")));
 app.use(express.static(path.join(__dirname, "../src/view")));
@@ -17,7 +18,6 @@ app.get("/", (req, res) => {
 })
 
 app.post("/testQuery", testQueryHandler);
-
 
 app.get("/test-email", controller.testEmail.bind(controller));
 
