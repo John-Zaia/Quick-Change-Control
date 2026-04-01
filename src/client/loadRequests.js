@@ -18,10 +18,20 @@ async function loadChangeRequests(){
             <td>${req.risk}</td>
             <td>${req.caseNumber}</td>
             <td>${req.status}</td>
-            <td>${req.email}</td>`;
+            <td>${req.email}</td>
+            <td><button onclick="approveRequest(${req.id})">Approve</button></td>`;
 
         tableBody.appendChild(row);
     });
+}
+
+async function approveRequest(id) {
+
+    await fetch(`/approve/${id}`, {
+        method: "POST"
+    });
+
+    await loadChangeRequests();
 }
 
 window.addEventListener("DOMContentLoaded", loadChangeRequests);

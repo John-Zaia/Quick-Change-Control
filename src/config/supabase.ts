@@ -37,5 +37,21 @@ export class Supabase {
       const result = await pool.query(query);
 
       return result.rows;
-  }}
+  }
+
+  async approveRequest(id: string) {
+
+  const query = `
+    UPDATE change_requests
+    SET "status" = 'Approved'
+    WHERE "id" = $1
+    RETURNING *;
+  `;
+
+  const result = await pool.query(query, [id]);
+
+  return result.rows[0];
+} 
+}
+
 

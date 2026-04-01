@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { MailerSendConfig } from "../config/MailerSend";
 import { SubmitChangeCommand } from "../commands/SubmitChangeCommand";
 import { Supabase } from "../config/supabase";
+import { ApproveChangeCommand } from "../commands/ApproveChangeCommand";
 
 export class ChangeRequestController {
 
@@ -17,6 +18,14 @@ export class ChangeRequestController {
       const result = await command.execute(req.body);
 
       res.json(result);
+  }
+
+  async approveRequest(req: Request, res: Response)
+  {
+    const id = req.params.id as string;
+    const command = new ApproveChangeCommand();
+    const result = await command.execute(id);
+    res.json(result);
   }
 
   async getAllRequests(req: Request, res: Response){
