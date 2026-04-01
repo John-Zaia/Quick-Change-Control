@@ -1,4 +1,4 @@
-table, th, td{
+table, thead, tbody, th, td{
     border: 1px solid black;
     border-collapse: collapse;
 }

@@ -2,7 +2,8 @@
 <html>
     <script src="/testDBQuery.js" defer></script>
     <script src="/testAPI.js" defer></script>
-    <script src="/changeRequestForm.js" defer></script>
+    <script src="/loadRequests.js" defer></script>
+    <script src="/changeRequestForm.js" defer></script>  
     <link rel="stylesheet" href="styles/styles.css">
     <head><title>DB Test</title></head>
     <body>
@@ -37,6 +38,7 @@
 
 
         <table>
+            <thead>
             <h1 id="tableTitle">Active Change Requests</h1>
             <tr>
                 <td>ID</td>
@@ -45,10 +47,13 @@
                 <td>Risk</td>
                 <td>Case Number</td>
                 <td>Status</td>
+                <td>Email</td>
             </tr>
-            <tr>
-                <td></td>
-            </tr>
+            </thead>
+            <tbody id="changeRequests"></tbody>
+                <tr>
+                </tr>
+            </tbody>
         </table>
     </body>
 </html>

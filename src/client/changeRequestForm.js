@@ -20,4 +20,6 @@ document.getElementById("changeRequestForm").addEventListener("submit", async (e
     const result = await response.json();
     
     console.log(result);
+
+    await loadChangeRequests();
 });

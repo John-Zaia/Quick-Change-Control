@@ -31,5 +31,11 @@ export class Supabase {
 
   return result.rows[0];
   } 
-}
+
+  async getAllChangeRequests(){
+      const query = 'SELECT * FROM change_requests'
+      const result = await pool.query(query);
+
+      return result.rows;
+  }}
 
