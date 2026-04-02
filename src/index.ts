@@ -28,3 +28,5 @@ app.listen(PORT, () => {
 app.get("/change-requests", controller.getAllRequests.bind(controller));
 
 app.post("/approve/:id", controller.approveRequest.bind(controller));
+
+app.post("/reject/:id", controller.rejectRequest.bind(controller));

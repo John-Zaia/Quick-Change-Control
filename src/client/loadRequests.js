@@ -19,7 +19,8 @@ async function loadChangeRequests(){
             <td>${req.caseNumber}</td>
             <td>${req.status}</td>
             <td>${req.email}</td>
-            <td><button onclick="approveRequest(${req.id})">Approve</button></td>`;
+            <td><button onclick="approveRequest(${req.id})">Approve</button></td>
+            <td><button onclick="rejectRequest(${req.id})">Deny</button></td>`;
 
         tableBody.appendChild(row);
     });
@@ -28,6 +29,15 @@ async function loadChangeRequests(){
 async function approveRequest(id) {
 
     await fetch(`/approve/${id}`, {
+        method: "POST"
+    });
+
+    await loadChangeRequests();
+}
+
+async function rejectRequest(id) {
+
+    await fetch(`/reject/${id}`, {
         method: "POST"
     });
 

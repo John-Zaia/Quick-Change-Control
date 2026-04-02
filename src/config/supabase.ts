@@ -52,6 +52,13 @@ export class Supabase {
 
   return result.rows[0];
 } 
+
+  async rejectRequest(id: string) 
+{
+  const query = `UPDATE change_requests SET "status" = 'Denied' WHERE "id" = $1 RETURNING *;`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0];
+} 
 }
 
 

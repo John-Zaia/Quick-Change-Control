@@ -5,7 +5,7 @@ export class ApproveChangeCommand {
   private supabase = new Supabase();
 
   async execute(id: string) {
-    this.supabase.approveRequest(id);
+    await this.supabase.approveRequest(id);
     return { message: "Request approved" };
   }
 }
