@@ -49,7 +49,6 @@ export class Supabase {
   `;
 
   const result = await pool.query(query, [id]);
-
   return result.rows[0];
 } 
 

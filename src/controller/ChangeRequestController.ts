@@ -29,6 +29,14 @@ export class ChangeRequestController {
     res.json(result);
   }
 
+  async sendApprovalEmail(req: Request ,res: Response)
+  {
+      const id = req.params.id as string;
+      const mailService = new MailerSendConfig();
+      await mailService.sendApprovalEmail(id);
+      res.json({ message: "Email sent" });
+  }
+
   async getAllRequests(req: Request, res: Response){
     
     const db = new Supabase();

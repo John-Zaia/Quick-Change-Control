@@ -1,5 +1,6 @@
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import dotenv from "dotenv";
+import { Supabase } from "./supabase";
 
 dotenv.config();
 
@@ -20,7 +21,7 @@ export class MailerSendConfig{
     const emailParameters = new EmailParams()
       .setFrom(sender)
       .setTo(receiver)
-      .setSubject("Test")
+      .setSubject("Your Change Request has been approved")
       .setText("Test.");
 
     const response = await mailerSend.email.send(emailParameters);
@@ -28,4 +29,30 @@ export class MailerSendConfig{
     console.log(response);
   }
 
+  async sendApprovalEmail(id: string)
+  {
+    
+    const mailerSend = new MailerSend({
+      apiKey: process.env.MAILERSEND_API_KEY!
+    });
+
+    const db = new Supabase();
+    const approvedRequest = await db.approveRequest(id);
+    const recipientEmail = approvedRequest.email;
+
+    const sender = new Sender("admin@test-p7kx4xwrpnmg9yjr.mlsender.net", "Manager");
+    const receiver = [
+      new Recipient(recipientEmail)
+    ];
+
+    const emailParameters = new EmailParams()
+      .setFrom(sender)
+      .setTo(receiver)
+      .setSubject("Your Change Request has been approved")
+      .setText("Your change request has been approved.");
+
+    const response = await mailerSend.email.send(emailParameters);
+
+    console.log(response);
+  }
 }

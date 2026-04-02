@@ -32,6 +32,10 @@ async function approveRequest(id) {
         method: "POST"
     });
 
+    const response = await fetch(`/approval-email/${id}`);
+    const data = await response.json();
+    document.getElementById("emailResult").textContent = JSON.stringify(data, null, 2);
+    
     await loadChangeRequests();
 }
 

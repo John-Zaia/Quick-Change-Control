@@ -30,3 +30,5 @@ app.get("/change-requests", controller.getAllRequests.bind(controller));
 app.post("/approve/:id", controller.approveRequest.bind(controller));
 
 app.post("/reject/:id", controller.rejectRequest.bind(controller));
+
+app.get("/approval-email/:id", controller.sendApprovalEmail.bind(controller));
