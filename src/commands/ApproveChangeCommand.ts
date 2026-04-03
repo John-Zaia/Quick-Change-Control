@@ -1,4 +1,4 @@
-import { Supabase } from "../config/supabase";
+import { Supabase } from "../config/Supabase";
 
 export class ApproveChangeCommand {
 

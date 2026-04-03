@@ -1,18 +1,11 @@
 import { Request, Response } from "express";
 import { MailerSendConfig } from "../config/MailerSend";
 import { SubmitChangeCommand } from "../commands/SubmitChangeCommand";
-import { Supabase } from "../config/supabase";
+import { Supabase } from "../config/Supabase";
 import { ApproveChangeCommand } from "../commands/ApproveChangeCommand";
 import { RejectChangeCommand } from "../commands/RejectChangeCommand";
 
 export class ChangeRequestController {
-
-  async testEmail(req: Request, res: Response) {
-      const mailService = new MailerSendConfig();
-      await mailService.sendTestEmail();
-      
-      res.json({ message: "Email sent successfully" });
-    }
 
   async submitRequest(req: Request, res: Response) {
       const command = new SubmitChangeCommand();
@@ -34,7 +27,7 @@ export class ChangeRequestController {
       const id = req.params.id as string;
       const mailService = new MailerSendConfig();
       await mailService.sendApprovalEmail(id);
-      res.json({ message: "Email sent" });
+      res.json(204);
   }
 
   async getAllRequests(req: Request, res: Response){
@@ -59,7 +52,7 @@ export class ChangeRequestController {
       const id = req.params.id as string;
       const mailService = new MailerSendConfig();
       await mailService.sendRejectionEmail(id);
-      res.json({ message: "Email sent" });
+      res.json(204);
   }
   
 }
