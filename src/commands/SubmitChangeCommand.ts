@@ -1,11 +1,12 @@
 import { ChangeRequestModel } from "../model/ChangeRequest";
 import { Supabase } from "../config/Supabase";
+import { Command } from "./Command"
 
-export class SubmitChangeCommand {
+export class SubmitChangeCommand extends Command {
 
   private databaseService = new Supabase();
 
-  async execute(data: any) {
+  async execute(data: any): Promise<any> {
 
     const changeRequest = new ChangeRequestModel(
       data.title,
