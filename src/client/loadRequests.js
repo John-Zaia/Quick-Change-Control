@@ -45,6 +45,10 @@ async function rejectRequest(id) {
         method: "POST"
     });
 
+    const response = await fetch(`/rejection-email/${id}`);
+    const data = await response.json();
+    document.getElementById("emailResult").textContent = JSON.stringify(data, null, 2);
+
     await loadChangeRequests();
 }
 

@@ -55,4 +55,31 @@ export class MailerSendConfig{
 
     console.log(response);
   }
+
+  async sendRejectionEmail(id: string)
+  {
+        
+    const mailerSend = new MailerSend({
+      apiKey: process.env.MAILERSEND_API_KEY!
+    });
+
+    const db = new Supabase();
+    const approvedRequest = await db.approveRequest(id);
+    const recipientEmail = approvedRequest.email;
+
+    const sender = new Sender("admin@test-p7kx4xwrpnmg9yjr.mlsender.net", "Manager");
+    const receiver = [
+      new Recipient(recipientEmail)
+    ];
+
+    const emailParameters = new EmailParams()
+      .setFrom(sender)
+      .setTo(receiver)
+      .setSubject("Your Change Request has been denied")
+      .setText("Your change request has been denied.");
+
+    const response = await mailerSend.email.send(emailParameters);
+
+    console.log(response);
+  }
 }

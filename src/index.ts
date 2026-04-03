@@ -32,3 +32,4 @@ app.post("/approve/:id", controller.approveRequest.bind(controller));
 app.post("/reject/:id", controller.rejectRequest.bind(controller));
 
 app.get("/approval-email/:id", controller.sendApprovalEmail.bind(controller));
+app.get("/rejection-email/:id", controller.sendRejectionEmail.bind(controller));

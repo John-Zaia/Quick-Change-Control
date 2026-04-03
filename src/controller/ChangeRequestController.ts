@@ -53,5 +53,13 @@ export class ChangeRequestController {
     const result = await command.execute(id);
     res.json(result);
   }
+
+  async sendRejectionEmail(req: Request, res: Response)
+  {
+      const id = req.params.id as string;
+      const mailService = new MailerSendConfig();
+      await mailService.sendRejectionEmail(id);
+      res.json({ message: "Email sent" });
+  }
   
 }
