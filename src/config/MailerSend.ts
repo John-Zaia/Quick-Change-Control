@@ -64,8 +64,8 @@ export class MailerSendConfig{
     });
 
     const db = new Supabase();
-    const approvedRequest = await db.approveRequest(id);
-    const recipientEmail = approvedRequest.email;
+    const rejectedRequest = await db.rejectRequest(id);
+    const recipientEmail = rejectedRequest.email;
 
     const sender = new Sender("admin@test-p7kx4xwrpnmg9yjr.mlsender.net", "Manager");
     const receiver = [
