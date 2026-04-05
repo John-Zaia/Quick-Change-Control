@@ -4,7 +4,7 @@ import { Command } from "./Command"
 
 export class SubmitChangeCommand extends Command {
 
-  private databaseService = new Supabase();
+  private supabase = new Supabase();
 
   async execute(data: any): Promise<any> {
 
@@ -17,7 +17,7 @@ export class SubmitChangeCommand extends Command {
       data.email
     );
 
-    await this.databaseService.saveChangeRequest(changeRequest);
+    await this.supabase.saveChangeRequest(changeRequest);
 
     return { message: "Change request created", data: changeRequest };
   }

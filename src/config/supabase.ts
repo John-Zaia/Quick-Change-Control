@@ -9,6 +9,7 @@ export const pool = new Pool({
 
 export class Supabase {
 
+  //puts all of the change request data into the databse
   async saveChangeRequest(request: any) {
         
   const query = `
@@ -32,6 +33,7 @@ export class Supabase {
   return result.rows[0];
   } 
 
+  //selects all rows from the db and returns it
   async getAllChangeRequests(){
       const query = 'SELECT * FROM change_requests'
       const result = await pool.query(query);
@@ -39,6 +41,7 @@ export class Supabase {
       return result.rows;
   }
 
+  //finds the id supplied and changes the status of the row to "approved"
   async approveRequest(id: string) {
 
   const query = `
@@ -52,6 +55,7 @@ export class Supabase {
   return result.rows[0];
 } 
 
+    //finds the id supplied and changes the status of the row to "denied"
   async rejectRequest(id: string) 
 {
   const query = `UPDATE change_requests SET "status" = 'Denied' WHERE "id" = $1 RETURNING *;`;

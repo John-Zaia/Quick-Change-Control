@@ -7,6 +7,7 @@ import { RejectChangeCommand } from "../commands/RejectChangeCommand";
 
 export class ChangeRequestController {
 
+  //calls the SubmitChangeCommand class to submit form data to the db
   async submitRequest(req: Request, res: Response) {
       const command = new SubmitChangeCommand();
       const result = await command.execute(req.body);
@@ -14,6 +15,7 @@ export class ChangeRequestController {
       res.json(result);
   }
 
+  //calls the ApproveChangeCommand to approve the request in the db
   async approveRequest(req: Request, res: Response)
   {
     const id = req.params.id as string;
@@ -22,6 +24,7 @@ export class ChangeRequestController {
     res.json(result);
   }
 
+  //calls the MailerSendConfig class to send the approval email
   async sendApprovalEmail(req: Request ,res: Response)
   {
       const id = req.params.id as string;
@@ -30,6 +33,7 @@ export class ChangeRequestController {
       res.json(204);
   }
 
+  //calls the Supabase class to get all the rows from the db
   async getAllRequests(req: Request, res: Response){
     
     const db = new Supabase();
@@ -38,7 +42,7 @@ export class ChangeRequestController {
     res.json(data);
   }
 
-  
+  //calls the RejectChangeCommand class to reject the request in the db
   async rejectRequest(req: Request, res: Response)
   {
     const id = req.params.id as string;
@@ -47,6 +51,7 @@ export class ChangeRequestController {
     res.json(result);
   }
 
+    //calls the MailerSendConfig class to send the rejection email
   async sendRejectionEmail(req: Request, res: Response)
   {
       const id = req.params.id as string;

@@ -1,3 +1,4 @@
+//grabs all the form submission data once the submit buttons is hit and does a POST request to change-request
 document.getElementById("changeRequestForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 

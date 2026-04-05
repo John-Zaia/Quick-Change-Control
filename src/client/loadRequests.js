@@ -1,3 +1,4 @@
+//loads all rows in the database to the page when the homepage.html is loaded
 async function loadChangeRequests(){
     const response = await fetch("/change-requests");
     const data = await response.json();

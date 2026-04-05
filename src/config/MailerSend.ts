@@ -6,6 +6,7 @@ dotenv.config();
 
 export class MailerSendConfig{
 
+  //sends an approval email to the user via mailersend
   async sendApprovalEmail(id: string)
   {
     
@@ -33,6 +34,7 @@ export class MailerSendConfig{
     console.log(response);
   }
 
+   //sends an rejection email to the user via mailersend
   async sendRejectionEmail(id: string)
   {
         
